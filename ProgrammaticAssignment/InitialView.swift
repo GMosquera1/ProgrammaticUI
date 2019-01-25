@@ -14,18 +14,24 @@ protocol InitialViewDelegate: AnyObject {
 
 class InitialView: UIView {
     weak var delegate: InitialViewDelegate?
+    var placeholderText = String()
     
     lazy var mainButton: UIButton = {
         let button = UIButton()
         button.setTitle("Segue", for: .normal)
-        button.backgroundColor = .blue
+        button.backgroundColor = .red
         button.addTarget(self, action: #selector(seguePressed), for: .touchUpInside)
         return button
     }()
     
     lazy var mainTextField: UITextField = {
         let textField = UITextField()
+        textField.backgroundColor = .orange
+        textField.textAlignment = .center
+        textField.textColor = .white
+        textField.borderStyle = .roundedRect
         textField.placeholder = "Insert text here"
+        textField.font = UIFont.init(name: "Arial-BoldItalicMT", size: 16.0)
         textField.keyboardType = UIKeyboardType.default
         textField.returnKeyType = UIReturnKeyType.done
         return textField
@@ -33,15 +39,12 @@ class InitialView: UIView {
     
     @objc func seguePressed() {
         
-        
         delegate?.seguePressed()
     }
     
     
     override init(frame: CGRect) {
-        // set yourself up like any UIView
         super.init(frame: UIScreen.main.bounds)
-        // our custom set up
         addSubview(mainButton)
         addSubview(mainTextField)
         setConstraints()
@@ -56,13 +59,9 @@ class InitialView: UIView {
         mainButton.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
         
         mainTextField.translatesAutoresizingMaskIntoConstraints = false
-//        mainTextField.centerXAnchor.constraint(equalToSystemSpacingAfter: self.centerXAnchor, multiplier: 1.0)
-        
-        
-        mainTextField.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: -5).isActive = true
-        mainTextField.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 150).isActive = true
-        mainTextField.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -33).isActive = true
-        mainTextField.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -30).isActive = true
+        mainTextField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 120).isActive = true
+        mainTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -125).isActive = true
+         mainTextField.bottomAnchor.constraint(equalTo: mainButton.bottomAnchor, constant: -100).isActive = true
     }
 }
 
