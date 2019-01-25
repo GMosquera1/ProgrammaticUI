@@ -9,11 +9,10 @@
 import UIKit
 
 class DetailView: UIView {
-
+    
     
     lazy var nameLabel: UILabel = {
         let label = UILabel()
-        label.text = "Genesis"
         label.textColor = .white
         return label
     }()
@@ -32,7 +31,7 @@ class DetailView: UIView {
     func labelConstraints() {
         nameLabel.translatesAutoresizingMaskIntoConstraints = false
         
-        nameLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 11 ).isActive = true
+        nameLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 50).isActive = true
         nameLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 150).isActive = true
         nameLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 22).isActive = true
     }

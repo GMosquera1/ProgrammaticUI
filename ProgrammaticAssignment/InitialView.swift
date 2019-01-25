@@ -9,12 +9,12 @@
 import UIKit
 
 protocol InitialViewDelegate: AnyObject {
-    func seguePressed()
+    func seguePressed(message: String)
 }
 
 class InitialView: UIView {
     weak var delegate: InitialViewDelegate?
-    var placeholderText = String()
+    
     
     lazy var mainButton: UIButton = {
         let button = UIButton()
@@ -38,8 +38,10 @@ class InitialView: UIView {
     }()
     
     @objc func seguePressed() {
+        if let newmessage = mainTextField.text {
+        delegate?.seguePressed(message: newmessage)
+        }
         
-        delegate?.seguePressed()
     }
     
     

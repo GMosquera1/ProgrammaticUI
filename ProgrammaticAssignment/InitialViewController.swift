@@ -9,7 +9,8 @@
 import UIKit
 
 class InitialViewController: UIViewController {
-
+public var placeholder = ""
+    
     let initialView = InitialView()
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,8 +22,8 @@ class InitialViewController: UIViewController {
 }
 
 extension InitialViewController: InitialViewDelegate {
-    func seguePressed() {
-        let detail = DetailViewController.init(message: "Hi, my name is Genesis")
+    func seguePressed(message: String) {
+        let detail = DetailViewController.init(message: message)
         
         navigationController?.pushViewController(detail, animated: true)
     }
